@@ -25,34 +25,54 @@ public class FrequencySort {
 		}
 		System.out.println();
 		
-		Map<Integer,Integer> map=new LinkedHashMap<Integer,Integer>();
+		Map<Integer,Integer> hashmap=new LinkedHashMap<Integer,Integer>();
 		for(int i=0;i<n;i++) {
 			
-			if(map.containsKey(arr[i])) {
-				map.put(arr[i], map.get(arr[i])+1);
+			if(hashmap.containsKey(arr[i])) {
+				hashmap.put(arr[i], hashmap.get(arr[i])+1);
 			}
 			else {
-				map.put(arr[i], 1);
+				hashmap.put(arr[i], 1);
 			}
 		}
 
-		System.out.print("elements frequency are");
+		System.out.println("elements frequency are");
 		
-		System.out.println(map);
+		for (Map.Entry<Integer, Integer> en : hashmap.entrySet()) {
+            System.out.println("(" + en.getKey() +
+                          "," + en.getValue()+")");
+        }
 		
 
 		
 		
-		List<Integer> valueslist = new ArrayList<Integer>(map.values());
-		Collections.sort(valueslist);
+		List<Map.Entry<Integer, Integer> > list =
+			       new LinkedList<Map.Entry<Integer, Integer> >(hashmap.entrySet());
 
 		
-		Set<Entry<Integer, Integer>> entrySet = map.entrySet();
-		List<Entry<Integer, Integer>> list = new ArrayList<>(entrySet);
+		Collections.sort(list, new Comparator<Map.Entry<Integer, Integer> >() {
+            public int compare(Map.Entry<Integer, Integer> o1,
+                               Map.Entry<Integer, Integer> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
 		
-		Collections.sort(list, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
 		
-		System.out.println("Sorted elements "+ list);
+		HashMap<Integer, Integer> temp = new LinkedHashMap<Integer, Integer>();
+        for (Map.Entry<Integer, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        System.out.println("Sorted elements frequency are");
+        for (Map.Entry<Integer, Integer> en : temp.entrySet()) {
+        	System.out.println("(" + en.getKey() +
+                    "," + en.getValue()+")");
+        }
+
+
+
+		
+		
 		
 	}
 }
