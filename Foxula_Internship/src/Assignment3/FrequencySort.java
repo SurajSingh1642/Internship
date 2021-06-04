@@ -38,10 +38,10 @@ public class FrequencySort {
 
 		System.out.println("elements frequency are");
 		
-		for (Map.Entry<Integer, Integer> en : hashmap.entrySet()) {
-            System.out.println("(" + en.getKey() +
-                          "," + en.getValue()+")");
-        }
+		for(Integer i: hashmap.keySet())
+		{
+			System.out.println("("+i+","+hashmap.get(i)+")");
+		}
 		
 
 		
@@ -59,15 +59,15 @@ public class FrequencySort {
         });
 		
 		
-		HashMap<Integer, Integer> temp = new LinkedHashMap<Integer, Integer>();
+		HashMap<Integer, Integer> hashmap2 = new LinkedHashMap<Integer, Integer>();
         for (Map.Entry<Integer, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
+            hashmap2.put(aa.getKey(), aa.getValue());
         }
         System.out.println("Sorted elements frequency are");
-        for (Map.Entry<Integer, Integer> en : temp.entrySet()) {
-        	System.out.println("(" + en.getKey() +
-                    "," + en.getValue()+")");
-        }
+        for(Integer i: hashmap2.keySet())
+		{
+			System.out.println("("+i+","+hashmap2.get(i)+")");
+		}
 
 
 
