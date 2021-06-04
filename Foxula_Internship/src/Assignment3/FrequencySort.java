@@ -1,10 +1,13 @@
 package Assignment3;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class FrequencySort {
-	public static void main(String args[]) {
-			
+	
+	public static void main(String []args) {
+		
+		
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the length of array");
 		int n=sc.nextInt();
@@ -13,6 +16,15 @@ public class FrequencySort {
 		{
 			arr[i]=sc.nextInt();
 		}
+
+		System.out.print("Array elements are:");
+		
+		for(int i=0;i<n;i++) {
+			System.out.print(arr[i]+" ");
+			
+		}
+		System.out.println();
+		
 		Map<Integer,Integer> map=new LinkedHashMap<Integer,Integer>();
 		for(int i=0;i<n;i++) {
 			
@@ -23,30 +35,24 @@ public class FrequencySort {
 				map.put(arr[i], 1);
 			}
 		}
-		System.out.println("Printing numbers with respetive Frequency");
-		for(Integer i: map.keySet())
-		{
-			System.out.println("("+i+","+map.get(i)+")");
-		}
-		
-		ArrayList<Integer> map2 = new ArrayList<Integer>(map.values());
-		
-		Collections.sort(map2);
-		
-		System.out.println("Printing is Increasing order of frequency");
-		for(Integer i:map2)
-		{
-			for(Integer j:map.keySet())
-			{
-				if(map.get(j)==i)
-				{
-					System.out.println("("+j+","+map.get(j)+")");
-				}
-			}
-		}
 
+		System.out.print("elements frequency are");
+		
+		System.out.println(map);
+		
+
+		
+		
+		List<Integer> valueslist = new ArrayList<Integer>(map.values());
+		Collections.sort(valueslist);
+
+		
+		Set<Entry<Integer, Integer>> entrySet = map.entrySet();
+		List<Entry<Integer, Integer>> list = new ArrayList<>(entrySet);
+		
+		Collections.sort(list, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+		
+		System.out.println("Sorted elements "+ list);
 		
 	}
-	
-
 }
